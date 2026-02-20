@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoby App</title>
+
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#000000">
+  <link rel="apple-touch-icon" href="icon-192.png">
 
   <style>
     body {
@@ -13,11 +16,13 @@
       font-family: Arial, sans-serif;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: #121212;
-      color: white;
       text-align: center;
+      background: linear-gradient(135deg, #000000, #222);
+      color: white;
+      padding: 20px;
     }
 
     .card, .login-card {
@@ -29,15 +34,8 @@
       backdrop-filter: blur(10px);
     }
 
-    .card {
-      background: rgba(255,255,255,0.08);
-      display: none;
-    }
-
-    .login-card {
-      background: rgba(255,255,255,0.05);
-      display: none;
-    }
+    .card { background: rgba(255,255,255,0.08); display: none; }
+    .login-card { background: rgba(255,255,255,0.05); display: none; }
 
     button {
       margin-top: 20px;
@@ -51,6 +49,18 @@
 
     .btn-fingerprint { background: #444; color: #00ffcc; }
     .btn-login { background: #00ffcc; color: #000; }
+    button:active { transform: scale(0.96); }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    a { display: block; margin: 10px 0; color: #00ffcc; font-size: 14px; text-decoration: none; }
 
     .logos {
       display: flex;
@@ -59,19 +69,9 @@
       margin-top: 20px;
     }
 
-    .logos img {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-    }
+    .logos img { width: 40px; height: 40px; border-radius: 8px; }
 
-    .version {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #888;
-    }
-
-    button:active { transform: scale(0.96); }
+    .version { margin-top: 10px; font-size: 12px; color: #888; }
   </style>
 </head>
 <body>
@@ -88,13 +88,18 @@
     <img src="icon-512.png" style="width:80px;height:80px;border-radius:16px;margin-bottom:15px;">
     <h1>TestowaAplikacja</h1>
     <p>Dobry wieczór!<br>Zaloguj się do aplikacji.</p>
-    <input type="password" placeholder="Hasło" style="width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;font-size:16px;">
-    <a href="#" style="color:#00ffcc;font-size:14px;text-decoration:none;display:block;margin:10px 0;">Nie pamiętasz hasła?</a>
+    <input type="password" placeholder="Hasło">
+    <a href="#">Nie pamiętasz hasła?</a>
     <button class="btn-fingerprint">Skonfiguruj odcisk palca</button>
     <button class="btn-login" onclick="alert('Zalogowano! 🎉')">Zaloguj się</button>
+
     <div class="logos">
-      <img src="logo1.png"><img src="logo2.png"><img src="logo3.png"><img src="logo4.png">
+      <img src="logo1.png" alt="Logo1">
+      <img src="logo2.png" alt="Logo2">
+      <img src="logo3.png" alt="Logo3">
+      <img src="logo4.png" alt="Logo4">
     </div>
+
     <div class="version">Wersja 4.73.2 (5559)</div>
   </div>
 
@@ -106,10 +111,8 @@
 
     // Sprawdzenie trybu uruchomienia
     if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-      // PWA
       document.getElementById('pwaCard').style.display = 'block';
     } else {
-      // Przeglądarka
       document.getElementById('browserCard').style.display = 'block';
     }
   </script>
