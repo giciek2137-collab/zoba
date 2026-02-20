@@ -3,71 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zoby App</title>
+  <title>TestowaAplikacja</title>
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#000000">
-
-  <!-- iOS icon -->
-  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="theme-color" content="#121212">
 
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #000000, #222);
-      color: white;
+      background-color: #121212;
+      color: #fff;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
+      padding: 20px;
     }
 
-    .card {
-      background: rgba(255,255,255,0.08);
+    .header {
+      margin-top: 40px;
+    }
+
+    .header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      margin-bottom: 15px;
+    }
+
+    .header h1 {
+      margin: 5px 0;
+      font-size: 24px;
+    }
+
+    .header p {
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    .login-card {
+      background: rgba(255,255,255,0.05);
       padding: 30px;
       border-radius: 20px;
       backdrop-filter: blur(10px);
       box-shadow: 0 0 25px rgba(0,0,0,0.5);
       width: 90%;
       max-width: 350px;
+      margin-top: 20px;
     }
 
-    button {
-      margin-top: 20px;
-      padding: 12px 20px;
+    .login-card input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .login-card a {
+      display: block;
+      margin: 10px 0;
+      color: #00ffcc;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .login-card button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
       border: none;
       border-radius: 12px;
-      background: #00ffcc;
-      color: black;
       font-weight: bold;
       font-size: 16px;
       cursor: pointer;
     }
 
-    button:active {
-      transform: scale(0.96);
+    .btn-fingerprint {
+      background: #444;
+      color: #00ffcc;
     }
+
+    .btn-login {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    .logos {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .logos img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .version {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #888;
+    }
+
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Witaj w Zoby 🚀</h1>
-    <p>To działa jak prawdziwa aplikacja mobilna.</p>
-    <button onclick="pokaz()">Kliknij mnie</button>
+  <div class="header">
+    <img src="icon-512.png" alt="Logo">
+    <h1>TestowaAplikacja</h1>
+    <p>Dobry wieczór!<br>Zaloguj się do aplikacji.</p>
+  </div>
+
+  <div class="login-card">
+    <input type="password" placeholder="Hasło">
+    <a href="#">Nie pamiętasz hasła?</a>
+    <button class="btn-fingerprint">Skonfiguruj odcisk palca</button>
+    <button class="btn-login" onclick="zaloguj()">Zaloguj się</button>
+  </div>
+
+  <div class="logos">
+    <img src="logo1.png" alt="Logo1">
+    <img src="logo2.png" alt="Logo2">
+    <img src="logo3.png" alt="Logo3">
+    <img src="logo4.png" alt="Logo4">
+  </div>
+
+  <div class="version">
+    Wersja 4.73.2 (5559)
   </div>
 
   <script>
-    function pokaz() {
-      alert("Działa! 🎉");
-    }
-
-    // Service Worker
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js");
+    function zaloguj() {
+      alert("Zalogowano! 🎉");
     }
   </script>
 
